@@ -13,7 +13,6 @@ public class Login {
         this.setLoggedin_username(loggedin_username);
         this.setLoggedin_name(loggedin_name);
         this.setLoggedin_role(loggedin_role);
-
     }
 
 
