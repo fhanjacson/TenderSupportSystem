@@ -9,21 +9,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="sample.Controller_Login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: C0C0C0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_Login">
    <children>
       <AnchorPane prefHeight="480.0" prefWidth="360.0">
          <children>
             <ImageView fitHeight="255.0" fitWidth="421.0" layoutX="45.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/apu.png" />
+                  <Image url="@../../images/apu.png" />
                </image>
             </ImageView>
          </children></AnchorPane>
       <AnchorPane layoutX="378.0" prefHeight="480.0" prefWidth="342.0">
          <children>
-            <TextField id="1" fx:id="text_username" layoutX="21.0" layoutY="200.0" prefHeight="35.0" prefWidth="300.0" promptText="Username" />
-            <PasswordField id="2" fx:id="text_password" layoutX="21.0" layoutY="245.0" prefHeight="35.0" prefWidth="300.0" promptText="Password" />
-            <Button id="3" fx:id="button_signIn" defaultButton="true" layoutX="21.0" layoutY="296.0" mnemonicParsing="false" onAction="#pressButton" prefHeight="30.0" prefWidth="300.0" text="Sign In" textFill="#4b4b4c">
+            <TextField id="1" fx:id="text_username" layoutX="21.0" layoutY="200.0" onKeyReleased="#disableButtonWhenEmpty" prefHeight="35.0" prefWidth="300.0" promptText="Username" />
+            <PasswordField id="2" fx:id="text_password" layoutX="21.0" layoutY="245.0" onKeyReleased="#disableButtonWhenEmpty" prefHeight="35.0" prefWidth="300.0" promptText="Password" />
+            <Button id="3" fx:id="button_signIn" defaultButton="true" layoutX="21.0" layoutY="296.0" mnemonicParsing="false" onAction="#buttonLogin" prefHeight="30.0" prefWidth="300.0" text="Sign In" textFill="#4b4b4c">
                <font>
                   <Font size="18.0" />
                </font>
