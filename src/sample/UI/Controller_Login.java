@@ -1,6 +1,5 @@
 package sample.UI;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.Code.User;
+import sample.Code.Staff;
 import sample.Code.misc;
 import sample.Main;
 
@@ -41,18 +40,18 @@ public class Controller_Login {
 
 
     public void buttonLogin() throws IOException {
-        User user = new User();
-        user.setUsername(text_username.getText());
-        user.setPassword(text_password.getText());
-        user.setUserRole(Main.login.getLoggedin_role());
-        if (user.signin()) {
+        Staff staff = new Staff();
+        staff.setUsername(text_username.getText());
+        staff.setPassword(text_password.getText());
+        staff.setUserRole(Main.login.getLoggedin_role());
+        if (staff.signin()) {
             Controller_Menu ControllerMenu = new Controller_Menu();
             ControllerMenu.showForm();
             primaryStage.hide();
         }
         else {
             misc.msgBox("Tender Support System", "Error", "Wrong Username or Password" );
-            misc.alertt();
+
         }
 
     }

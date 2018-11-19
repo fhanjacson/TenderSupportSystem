@@ -15,13 +15,21 @@ public class misc {
         alert.setTitle(Title);
         alert.setHeaderText(Header);
         alert.setContentText(Content);
-
         alert.showAndWait();
     }
 
 
-
-    public static void alertt() {
-
+    public static boolean isInteger(String str) {
+        if(str == null || str.trim().isEmpty()) {
+            return false;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            if(!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
+
+
 }

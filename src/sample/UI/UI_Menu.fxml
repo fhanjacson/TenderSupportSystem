@@ -16,6 +16,8 @@
       <Button layoutX="544.0" layoutY="281.0" mnemonicParsing="false" onAction="#someFunction" text="Button" />
       <ToolBar prefHeight="40.0" prefWidth="720.0">
         <items>
+            <Button fx:id="buttonHome" mnemonicParsing="false" onAction="#gotoHome" text="Home" />
+            <Separator layoutX="101.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
           <Button fx:id="buttonUserAccount" mnemonicParsing="false" onAction="#gotoUserAccount" text="User Account" />
             <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
             <Button mnemonicParsing="false" text="Tender Request" />
@@ -24,9 +26,10 @@
             <Separator layoutX="136.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
             <Button layoutX="150.0" layoutY="13.0" mnemonicParsing="false" text="Button" />
             <Separator layoutX="206.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
-            <Button layoutX="220.0" layoutY="13.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="220.0" layoutY="13.0" mnemonicParsing="false" text="Report" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button alignment="CENTER" layoutX="290.0" layoutY="13.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gotoLogin" text="Log out" />
+            <Separator layoutX="101.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
         </items>
       </ToolBar>
    </children>

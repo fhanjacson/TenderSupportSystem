@@ -7,13 +7,13 @@ import java.util.ArrayList;
 public class Login {
     private String loggedin_username;
     private String loggedin_name;
-    private int loggedin_role;
+    private Integer loggedin_role;
 
     public Login() {}
 
     boolean Verify(String username, String password) {
         ArrayList<String> list;
-        int role;
+        Integer role;
         String dbusername, dbpassword, name;
         try {
             DBconnection conn = new DBconnection();
@@ -34,8 +34,8 @@ public class Login {
             } else {
                 System.out.println("Fail");
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        }catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -47,7 +47,7 @@ public class Login {
     public void setLoggedin_name(String loggedin_name){
         this.loggedin_name = loggedin_name;
     }
-    public void setLoggedin_role(int loggedin_role){
+    public void setLoggedin_role(Integer loggedin_role){
         this.loggedin_role = loggedin_role;
     }
 
@@ -57,7 +57,7 @@ public class Login {
     public String getLoggedin_name() {
         return loggedin_name;
     }
-    public int getLoggedin_role(){
+    public Integer getLoggedin_role(){
         return  loggedin_role;
     }
 }

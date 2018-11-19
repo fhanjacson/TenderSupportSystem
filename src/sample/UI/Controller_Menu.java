@@ -1,5 +1,6 @@
 package sample.UI;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,16 +14,13 @@ import java.io.IOException;
 public class Controller_Menu {
 
     @FXML
-    Label label1;
+    Label label1, label2, label3;
     @FXML
-    Label label2;
-    @FXML
-    Label label3;
-    @FXML
-    Button buttonUserAccount;
+    Button buttonUserAccount, buttonHome;
+
     @FXML
     private void initialize() {
-
+        buttonHome.setDisable(true);
         if (Main.login.getLoggedin_role() == 1 || Main.login.getLoggedin_role() == 2){
             buttonUserAccount.setDisable(false);
         }
@@ -63,4 +61,7 @@ public class Controller_Menu {
     }
 
 
+    public void gotoHome() {
+        primaryStage.show();
+    }
 }
