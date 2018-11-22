@@ -13,7 +13,13 @@ public class SystemAdmin {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void deleteUser(Integer id){
 
     }
+
+    public void updateUser(){}
+
 
 }

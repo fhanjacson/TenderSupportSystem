@@ -3,6 +3,8 @@ package sample;
 //#4b4b4c Text
 //TODO https://code.makery.ch/blog/javafx-dialogs-official/
 //TODO https://stackoverflow.com/questions/40519580/trying-to-determine-if-a-string-is-an-integer?rq=1
+//TODO Implement Object Oriented
+//TODO Encapsulation, Abstraction, Inheritance, Polymorphism implements interface
 
 
 import javafx.application.Application;

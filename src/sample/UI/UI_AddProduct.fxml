@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_AddProduct">
+   <children>
+      <Button fx:id="buttonOK" layoutX="182.0" layoutY="138.0" mnemonicParsing="false" onAction="#addNewProduct" prefHeight="25.0" prefWidth="100.0" text="OK" />
+      <Button fx:id="btnCancel" layoutX="182.0" layoutY="188.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="25.0" prefWidth="100.0" text="Cancel" />
+      <TextField fx:id="txt_name" layoutX="14.0" layoutY="63.0" promptText="Name" />
+      <TextField fx:id="txt_material" layoutX="14.0" layoutY="113.0" promptText="Material" />
+      <TextField fx:id="txt_category" layoutX="14.0" layoutY="163.0" promptText="Category" />
+      <TextField fx:id="txt_price" layoutX="14.0" layoutY="213.0" promptText="Price" />
+      <TextField fx:id="txt_id" layoutX="14.0" layoutY="13.0" promptText="ID (Auto Generated)" />
+   </children>
+</AnchorPane>

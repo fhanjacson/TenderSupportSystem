@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.Code.Logging;
 import sample.Code.Staff;
 import sample.Code.misc;
 import sample.Main;
@@ -48,6 +49,7 @@ public class Controller_Login {
             Controller_Menu ControllerMenu = new Controller_Menu();
             ControllerMenu.showForm();
             primaryStage.hide();
+            Logging.log(Main.login.getLoggedin_username(), "Login", "");
         }
         else {
             misc.msgBox("Tender Support System", "Error", "Wrong Username or Password" );

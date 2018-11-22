@@ -19,6 +19,14 @@ public class DBconnection {
         connection.close();
     }
 
+    public void addNewProduct(String name, String material, String category, Double price) throws SQLException, ClassNotFoundException {
+        new DBconnection();
+        Statement st = connection.createStatement();
+        st.executeUpdate("INSERT INTO tendersupportsystem.product (Product_Name, Product_Material, Product_Category, Product_Price) VALUES ('" + name + "', '" + material + "' , '" + category + "' , '"+ price +"')");
+        connection.close();
+    }
+
+
 
     public ArrayList<String> executequery(String sqlQuery) throws ClassNotFoundException, SQLException {
         ArrayList<String> list = new ArrayList<>();
@@ -35,6 +43,7 @@ public class DBconnection {
                 list.add(rs.getString(6)); //contact
                 list.add(rs.getString(7)); //address
             }
+            con.close();
         }catch (Exception e) {
             e.printStackTrace();
         }

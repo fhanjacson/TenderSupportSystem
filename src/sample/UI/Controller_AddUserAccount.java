@@ -1,48 +1,44 @@
 package sample.UI;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import sample.Code.SystemAdmin;
 import sample.Code.misc;
 
 import java.io.IOException;
 
-public class Controller_ManageUserAccount {
-
-//    private static Stage primaryStage = new Stage();
-    @FXML
-    TextField txt_id, txt_username, txt_password, txt_role, txt_name, txt_contact, txt_address;
-    @FXML
-    Label label;
-    @FXML
-    public void initialize() {
-        txt_id.setDisable(true);
-//        label.setText("add new");
-    }
-
+public class Controller_AddUserAccount {
 
     private static Stage primaryStage = new Stage();
     private SystemAdmin admin = new SystemAdmin();
+
+    @FXML
+    TextField txt_id, txt_username, txt_password, txt_role, txt_name, txt_contact, txt_address;
+
+    @FXML
+    public void initialize(){
+        txt_id.setDisable(true);
+    }
+
+    @FXML
     public void showForm() throws IOException {
-//        System.out.println(action);
-//        label.setText(action);
-        Parent root = FXMLLoader.load(Controller_Menu.class.getResource("UI_ManageUserAccount.fxml"));
+        Parent root = FXMLLoader.load(Controller_Menu.class.getResource("UI_AddUserAccount.fxml"));
         primaryStage.setTitle("Tender Support System");
         primaryStage.setScene(new Scene(root, 350, 350));
         primaryStage.setResizable(false);
         primaryStage.initModality(Modality.APPLICATION_MODAL);
-        primaryStage.show();
+        primaryStage.showAndWait();
     }
 
     public void addNewUser(){
-//        Integer id = 0;
-//        String strid = null;
         String username = null;
         String password = null;
         Integer role = 0;
@@ -50,8 +46,6 @@ public class Controller_ManageUserAccount {
         String name = null;
         String contact = null;
         String address = null;
-//        boolean datavalid = false;
-
 
         strrole = txt_role.getText();
         if(misc.isInteger(strrole)){
@@ -88,4 +82,10 @@ public class Controller_ManageUserAccount {
         }
 
     }
+
+    public void Cancel() {
+        primaryStage.close();
+    }
+
+
 }

@@ -20,13 +20,11 @@
             <Separator layoutX="101.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
           <Button fx:id="buttonUserAccount" mnemonicParsing="false" onAction="#gotoUserAccount" text="User Account" />
             <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
-            <Button mnemonicParsing="false" text="Tender Request" />
+            <Button fx:id="buttonRequest" mnemonicParsing="false" onAction="#gotoRequest" text="Tender Request" />
             <Separator layoutX="66.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
-            <Button layoutX="80.0" layoutY="13.0" mnemonicParsing="false" text="Tender Product" />
-            <Separator layoutX="136.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
-            <Button layoutX="150.0" layoutY="13.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="buttonProduct" layoutX="80.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoProduct" text="Tender Product" />
             <Separator layoutX="206.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
-            <Button layoutX="220.0" layoutY="13.0" mnemonicParsing="false" text="Report" />
+            <Button fx:id="buttonReport" layoutX="220.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoReport" text="Report" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button alignment="CENTER" layoutX="290.0" layoutY="13.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gotoLogin" text="Log out" />
             <Separator layoutX="101.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />

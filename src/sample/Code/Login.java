@@ -4,7 +4,7 @@ import sample.Main;
 
 import java.util.ArrayList;
 
-public class Login {
+public class Login{
     private String loggedin_username;
     private String loggedin_name;
     private Integer loggedin_role;
@@ -34,6 +34,7 @@ public class Login {
             } else {
                 System.out.println("Fail");
             }
+
         }catch (Exception e) {
             e.printStackTrace();
         }
