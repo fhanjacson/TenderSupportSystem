@@ -1,17 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_AddProduct">
+<AnchorPane prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_AddProduct">
    <children>
-      <Button fx:id="buttonOK" layoutX="182.0" layoutY="138.0" mnemonicParsing="false" onAction="#addNewProduct" prefHeight="25.0" prefWidth="100.0" text="OK" />
-      <Button fx:id="btnCancel" layoutX="182.0" layoutY="188.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="25.0" prefWidth="100.0" text="Cancel" />
-      <TextField fx:id="txt_name" layoutX="14.0" layoutY="63.0" promptText="Name" />
-      <TextField fx:id="txt_material" layoutX="14.0" layoutY="113.0" promptText="Material" />
-      <TextField fx:id="txt_category" layoutX="14.0" layoutY="163.0" promptText="Category" />
-      <TextField fx:id="txt_price" layoutX="14.0" layoutY="213.0" promptText="Price" />
-      <TextField fx:id="txt_id" layoutX="14.0" layoutY="13.0" promptText="ID (Auto Generated)" />
+      <VBox prefHeight="350.0" prefWidth="350.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="350.0" text="Add Product" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <GridPane prefHeight="300.0" prefWidth="350.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="txt_name" promptText="Name" GridPane.columnIndex="1" />
+                  <TextField fx:id="txt_material" promptText="Material" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_category" promptText="Category" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txt_price" promptText="Price" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txt_discount" layoutX="105.0" layoutY="168.0" promptText="Discount" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="txt_markup" layoutX="105.0" layoutY="168.0" promptText="MarkUp" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="txt_labourcost" layoutX="105.0" layoutY="242.0" promptText="Labour Cost" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label text="Product Name" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin></Label>
+                  <Label text="Material" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin></Label>
+                  <Label text="Category" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                  </GridPane.margin></Label>
+             <Label text="Price" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                 <GridPane.margin>
+                     <Insets left="10.0" />
+                 </GridPane.margin></Label>
+             <Button fx:id="buttonOK" defaultButton="true" mnemonicParsing="false" onAction="#addNewProduct" prefHeight="25.0" prefWidth="100.0" text="Add" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                 <GridPane.margin>
+                     <Insets />
+                 </GridPane.margin>
+                 <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                 </padding>
+             </Button>
+             <Button fx:id="btnCancel" cancelButton="true" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="100.0" text="Cancel" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+             <Label text="Discount" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                 <GridPane.margin>
+                     <Insets left="10.0" />
+                 </GridPane.margin>
+                  </Label>
+                  <Label text="Mark Up" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Labour Cost" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

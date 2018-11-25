@@ -2,6 +2,7 @@ package sample.Code;
 
 import sample.Main;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Login{
@@ -17,12 +18,13 @@ public class Login{
         String dbusername, dbpassword, name;
         try {
             DBconnection conn = new DBconnection();
-            list = conn.executequery("Select * from tendersupportsystem.user WHERE tendersupportsystem.user.user_username = '" + username + "'");
-            System.out.println(list.get(1)+ "\t" + list.get(2) + "\t" + list.get(3) + "\t" + list.get(4));
-            dbusername = list.get(1);
-            dbpassword = list.get(2);
-            role = Integer.parseInt(list.get(3));
-            name = list.get(4);
+            Staff staff = new Staff();
+            staff = conn.readLoginDetail("Select * from tendersupportsystem.user WHERE tendersupportsystem.user.user_username = '" + username + "'");
+
+            dbusername = staff.getUsername();
+            dbpassword = staff.getPassword();
+            role = staff.getUserRole();
+            name = staff.getName();
 
             if (username.equals(dbusername) && password.equals(dbpassword)) {
                 System.out.println("Logged In!");
@@ -39,6 +41,17 @@ public class Login{
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static void log(String user, String action, String detail){
+        System.out.println(user + " " + action + " " + detail);
+
+        try {
+            DBconnection dbc = new DBconnection();
+            dbc.log(user, action, detail);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 

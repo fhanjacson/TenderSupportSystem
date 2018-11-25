@@ -7,12 +7,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller_Report {
-    void showForm() throws IOException {
+public class Controller_AddTenderList {
+    public void showForm() throws IOException {
         Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(Controller_Menu.class.getResource("UI_Report.fxml"));
+        Parent root = FXMLLoader.load(Controller_Menu.class.getResource("UI_AddTenderList.fxml"));
         primaryStage.setTitle("Tender Support System");
-        primaryStage.setScene(new Scene(root, 720, 480));
+        primaryStage.setScene(new Scene(root, 350, 350));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

@@ -2,6 +2,9 @@ package sample.Code;
 
 
 import sample.Main;
+import sample.UI.Controller_Login;
+
+import java.io.IOException;
 
 public class Staff {
     private Integer user_index;
@@ -23,12 +26,17 @@ public class Staff {
         this.user_address = address;
     }
 
-
     public boolean signin() {
-
         return Main.login.Verify(this.getUsername(), this.getPassword());
     }
 
+    public static void signout() throws IOException {
+        Login.log(Main.login.getLoggedin_username(), "Logout", "");
+        Controller_Login ControllerLogin = new Controller_Login();
+        ControllerLogin.gotoLogin();
+
+
+    }
 
     public void setUserIndex(Integer userindex){this.user_index = userindex;}
     public void setUsername(String username) {this.user_username = username;}

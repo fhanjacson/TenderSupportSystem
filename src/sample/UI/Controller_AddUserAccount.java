@@ -1,7 +1,5 @@
 package sample.UI;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,82 +7,63 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import sample.Code.SystemAdmin;
 import sample.Code.misc;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Controller_AddUserAccount {
 
-    private static Stage primaryStage = new Stage();
-    private SystemAdmin admin = new SystemAdmin();
-
     @FXML
-    TextField txt_id, txt_username, txt_password, txt_role, txt_name, txt_contact, txt_address;
+    TextField txt_username, txt_password, txt_role, txt_name, txt_contact, txt_address;
 
-    @FXML
-    public void initialize(){
-        txt_id.setDisable(true);
-    }
-
-    @FXML
     public void showForm() throws IOException {
+        Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(Controller_Menu.class.getResource("UI_AddUserAccount.fxml"));
         primaryStage.setTitle("Tender Support System");
         primaryStage.setScene(new Scene(root, 350, 350));
         primaryStage.setResizable(false);
         primaryStage.initModality(Modality.APPLICATION_MODAL);
-        primaryStage.showAndWait();
+        primaryStage.show();
     }
 
-    public void addNewUser(){
-        String username = null;
-        String password = null;
-        Integer role = 0;
-        String strrole = null;
-        String name = null;
-        String contact = null;
-        String address = null;
+    @FXML
+    void addNewUser() throws SQLException, ClassNotFoundException {
+        String username = txt_username.getText().trim();
+        String password = txt_password.getText().trim();
+        Integer role = null;
+        String strrole = txt_role.getText().trim();
+        String name = txt_name.getText().trim();
+        String contact = txt_contact.getText().trim();
+        String address = txt_address.getText().trim();
 
-        strrole = txt_role.getText();
         if(misc.isInteger(strrole)){
-            role = Integer.parseInt(txt_role.getText().trim());
-            System.out.println("role is number");
-        }
-        else{
-            System.out.println("role is not number");
-        }
+            role = Integer.parseInt(strrole);
+            System.out.println("price is number");
+        }else{System.out.println("price not number");}
 
-        try {
-            username = txt_username.getText().trim();
-            password = txt_password.getText().trim();
-            name = txt_name.getText().trim();
-            contact = txt_contact.getText().trim();
-            address = txt_address.getText().trim();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if (password != null && contact !=null && address != null) {
-            if(!(username.isEmpty()) && !(password.isEmpty()) && !(role.toString().isEmpty()) && !(contact.isEmpty()) && !(address.isEmpty())){
-                if(misc.isInteger(strrole)){
-                    admin.addNewUser(username, password, role, name,contact, address);
-                    primaryStage.close();
-                }
-                else{
-                    misc.msgBox("Add User", "Error", "role is not an integer number");
-                }
-            }
-            else{
-                misc.msgBox("Add User", "Error", "Text Field cannot be empty");
-            }
-        }
-
+        if(!(username.isEmpty())){
+            if(!(password.isEmpty())){
+                if(!(strrole.isEmpty())&& misc.isInteger(strrole)){
+                    if(!(name.isEmpty())){
+                        if(!(contact.isEmpty())){
+                            if(!(address.isEmpty())){
+                                SystemAdmin.addStaff(username, password, role, name,contact, address);
+                                getPrimaryStage().close();
+                            }else{misc.msgBox("Update Product","Error", "Name is not valid");}
+                        }else{misc.msgBox("Update Product","Error", "Contact is not valid");}
+                    }else{misc.msgBox("Update Product","Error", "Name is not valid");}
+                }else{misc.msgBox("Update Product","Error", "Role is not valid");}
+            }else{misc.msgBox("Update Product","Error", "Password is not valid");}
+        }else{misc.msgBox("Update Product","Error", "Username is not valid");}
     }
 
-    public void Cancel() {
-        primaryStage.close();
+    Stage getPrimaryStage(){return (Stage) (txt_name.getScene().getWindow());}
+
+    @FXML
+    void cancel(){
+        getPrimaryStage().close();
     }
 
 

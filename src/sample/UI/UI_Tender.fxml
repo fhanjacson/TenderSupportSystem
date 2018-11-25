@@ -10,33 +10,32 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_UserAccount">
+<AnchorPane prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_Tender">
    <children>
       <SplitPane dividerPositions="0.0899581589958159" orientation="VERTICAL" prefHeight="480.0" prefWidth="720.0">
-        <items>
+         <items>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
-              <items>
+               <items>
                   <Button fx:id="buttonAdd" mnemonicParsing="false" onAction="#add" text="Add" />
-                  <Separator layoutX="93.0" layoutY="10.0" orientation="VERTICAL" prefHeight="25.0" />
-                  <Button fx:id="buttonEdit" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" onAction="#edit" text="Edit" />
                   <Separator orientation="VERTICAL" prefHeight="25.0" />
+                  <Button fx:id="buttonEdit" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" onAction="#edit" text="Edit" />
+                  <Separator layoutX="52.0" layoutY="10.0" orientation="VERTICAL" prefHeight="25.0" />
                   <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refreshTable" text="Refresh" />
                   <Pane HBox.hgrow="ALWAYS" />
                   <Button alignment="CENTER" layoutX="290.0" layoutY="13.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gotoLogin" text="Log out" />
-              </items>
+               </items>
             </ToolBar>
             <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0">
-              <columns>
-                <TableColumn fx:id="Column1" prefWidth="34.0" text="ID" />
-                <TableColumn fx:id="Column2" prefWidth="102.0" text="Username" />
-                  <TableColumn fx:id="Column3" prefWidth="101.0" text="Password" />
-                  <TableColumn fx:id="Column4" prefWidth="63.0" text="Role" />
-                  <TableColumn fx:id="Column5" prefWidth="143.0" text="Name" />
-                  <TableColumn fx:id="Column6" prefWidth="129.0" text="Contact" />
-                  <TableColumn fx:id="Column7" prefWidth="146.0" text="Address" />
-              </columns>
+               <columns>
+                  <TableColumn fx:id="Column1" prefWidth="34.0" text="ID" />
+                  <TableColumn fx:id="Column2" prefWidth="167.0" text="Name" />
+                  <TableColumn fx:id="Column3" prefWidth="130.0" text="Date Created" />
+                  <TableColumn fx:id="Column4" minWidth="3.0" prefWidth="81.0" text="Deadline" />
+                  <TableColumn fx:id="Column5" prefWidth="120.0" text="Total Amount" />
+                  <TableColumn fx:id="Column6" prefWidth="120.0" text="Status" />
+               </columns>
             </TableView>
-        </items>
+         </items>
       </SplitPane>
    </children>
 </AnchorPane>

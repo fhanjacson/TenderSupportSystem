@@ -1,14 +1,10 @@
 package sample.Code;
 
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+
+import java.time.LocalDate;
 
 public class misc {
-
 
     public static void msgBox(String Title, String Header, String Content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -18,30 +14,30 @@ public class misc {
         alert.showAndWait();
     }
 
-
     public static boolean isInteger(String str) {
-        if(str == null || str.trim().isEmpty()) {
-            return false;
-        }
+        if(str == null || str.trim().isEmpty()) {return false;}
         for (int i = 0; i < str.length(); i++) {
-            if(!Character.isDigit(str.charAt(i))) {
-                return false;
-            }
+            if(!Character.isDigit(str.charAt(i))) {return false;}
         }
         return true;
     }
 
     public static boolean isDouble(String str){
-        if(str == null || str.trim().isEmpty()){
+        try{
+            Double.parseDouble(str);
+            return true;
+        }catch (Exception e){
             return false;
         }
-        for (int i = 0; i < str.length(); i++) {
-            if(!Character.isDigit(str.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
     }
 
+    public static boolean isDate(String str){
+        try{
+            LocalDate.parse(str);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 
 }

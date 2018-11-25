@@ -23,8 +23,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Controller_Product {
-    private static Stage primaryStage = new Stage();
-
     private ObservableList<Product> productdetail = FXCollections.observableArrayList();
     @FXML Button buttonAdd, buttonEdit;
     @FXML TableView<Product> tableView;
@@ -33,42 +31,40 @@ public class Controller_Product {
     @FXML TableColumn<Product, String> Column3;
     @FXML TableColumn<Product, String> Column4;
     @FXML TableColumn<Product, Double> Column5;
+    @FXML TableColumn<Product, Double> Column6;
+    @FXML TableColumn<Product, Double> Column7;
+    @FXML TableColumn<Product, Double> Column8;
+
 
     @FXML
-    private void initialize() {
+    private void initialize() throws SQLException, ClassNotFoundException {
         Column1.setCellValueFactory(new PropertyValueFactory<>("product_index"));
         Column2.setCellValueFactory(new PropertyValueFactory<>("product_name"));
         Column3.setCellValueFactory(new PropertyValueFactory<>("product_material"));
         Column4.setCellValueFactory(new PropertyValueFactory<>("product_category"));
         Column5.setCellValueFactory(new PropertyValueFactory<>("product_price"));
+        Column6.setCellValueFactory(new PropertyValueFactory<>("product_discount"));
+        Column7.setCellValueFactory(new PropertyValueFactory<>("product_markup"));
+        Column8.setCellValueFactory(new PropertyValueFactory<>("product_labourcost"));
 
-        productdetail = FXCollections.observableArrayList();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tendersupportsystem?serverTimezone=UTC", "user", "1234");
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM tendersupportsystem.product");
-            while (rs.next()){
-                productdetail.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5)));
-            }
-            con.close();
-        } catch (ClassNotFoundException | SQLException e) {e.printStackTrace();}
-
+        productdetail = Manager.viewProduct();
         tableView.setItems(productdetail);
     }
 
 
     void showForm() throws IOException {
+        Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(Controller_Menu.class.getResource("UI_Product.fxml"));
         primaryStage.setTitle("Tender Support System");
-        primaryStage.setScene(new Scene(root, 720, 480));
+        primaryStage.setScene(new Scene(root, 900, 480));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
 
-    public void gotoHome(ActionEvent actionEvent) {
-    }
+    public void gotoLogin() throws IOException {
+        Staff.signout();
+        getPrimaryStage().close();
 
-    public void gotoLogin(ActionEvent actionEvent) {
     }
 
     public void add() throws IOException {
@@ -76,23 +72,22 @@ public class Controller_Product {
         addproduct.showForm();
     }
 
-    public void edit(ActionEvent actionEvent) {
+    public void edit() throws IOException {
+        Controller_EditProduct editProduct = new Controller_EditProduct();
+        editProduct.showForm();
     }
 
 
-    public void refreshTable() {
-        try {
-            tableView.setItems(null);
-            productdetail.clear();
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tendersupportsystem?serverTimezone=UTC", "user", "1234");
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM tendersupportsystem.product");
-            while (rs.next()){
-                productdetail.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5)));
-            }
-            con.close();
-        } catch (ClassNotFoundException | SQLException e) {e.printStackTrace();}
+    public void refreshTable() throws SQLException, ClassNotFoundException {
+        tableView.setItems(null);
+        productdetail.clear();
+        productdetail = Manager.viewProduct();
         tableView.setItems(productdetail);
 
     }
+
+    Stage getPrimaryStage(){
+        return (Stage) (buttonAdd.getScene().getWindow());
+    }
+
 }

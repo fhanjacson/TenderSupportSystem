@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.Code.Logging;
+import sample.Code.Login;
 import sample.Code.Staff;
 import sample.Code.misc;
 import sample.Main;
@@ -29,8 +29,8 @@ public class Controller_Login {
         button_signIn.setDisable(true);
     }
 
-    private static Stage primaryStage = new Stage();
     public void gotoLogin() throws IOException {
+        Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(Controller_Login.class.getResource("UI_Login.fxml"));
         primaryStage.setTitle("Tender Support System");
         primaryStage.setScene(new Scene(root, 720, 480));
@@ -46,16 +46,28 @@ public class Controller_Login {
         staff.setPassword(text_password.getText());
         staff.setUserRole(Main.login.getLoggedin_role());
         if (staff.signin()) {
-            Controller_Menu ControllerMenu = new Controller_Menu();
-            ControllerMenu.showForm();
-            primaryStage.hide();
-            Logging.log(Main.login.getLoggedin_username(), "Login", "");
+            if(Main.login.getLoggedin_role() == 1){
+                Controller_UserAccount userAccount = new Controller_UserAccount();
+                userAccount.showForm();
+            }else if(Main.login.getLoggedin_role() == 2){
+                Controller_Menu menu = new Controller_Menu();
+                menu.showForm();
+            }else if(Main.login.getLoggedin_role() == 3){
+                Controller_TenderList tenderList = new Controller_TenderList();
+                tenderList.showForm();
+            }
+
+            getPrimaryStage().close();
+            Login.log(Main.login.getLoggedin_username(), "Login", "");
         }
         else {
             misc.msgBox("Tender Support System", "Error", "Wrong Username or Password" );
 
         }
 
+    }
+    Stage getPrimaryStage(){
+        return (Stage) (button_signIn.getScene().getWindow());
     }
 
     public void disableButtonWhenEmpty(){

@@ -7,28 +7,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_Menu">
+<AnchorPane prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_Menu">
    <children>
-      <Label fx:id="label1" layoutX="226.0" layoutY="102.0" text="Label" />
-      <Label fx:id="label2" layoutX="226.0" layoutY="143.0" text="Label" />
-      <Label fx:id="label3" layoutX="226.0" layoutY="182.0" text="Label" />
-      <Button layoutX="544.0" layoutY="281.0" mnemonicParsing="false" onAction="#someFunction" text="Button" />
       <ToolBar prefHeight="40.0" prefWidth="720.0">
         <items>
             <Button fx:id="buttonHome" mnemonicParsing="false" onAction="#gotoHome" text="Home" />
             <Separator layoutX="101.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
           <Button fx:id="buttonUserAccount" mnemonicParsing="false" onAction="#gotoUserAccount" text="User Account" />
             <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
-            <Button fx:id="buttonRequest" mnemonicParsing="false" onAction="#gotoRequest" text="Tender Request" />
+            <Button fx:id="buttonTender" mnemonicParsing="false" onAction="#gotoTenderList" text="Tender List" />
             <Separator layoutX="66.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
             <Button fx:id="buttonProduct" layoutX="80.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoProduct" text="Tender Product" />
             <Separator layoutX="206.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
             <Button fx:id="buttonReport" layoutX="220.0" layoutY="13.0" mnemonicParsing="false" onAction="#gotoReport" text="Report" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button alignment="CENTER" layoutX="290.0" layoutY="13.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gotoLogin" text="Log out" />
-            <Separator layoutX="101.0" layoutY="10.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="10.0" />
         </items>
       </ToolBar>
+      <Label fx:id="labelwelcome" alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="50.0" prefWidth="720.0" text="pls give me good marks">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
    </children>
 </AnchorPane>

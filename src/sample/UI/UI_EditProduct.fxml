@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_EditUserAccount">
+<AnchorPane prefHeight="350.0" prefWidth="350.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UI.Controller_EditProduct">
    <children>
       <VBox prefHeight="350.0" prefWidth="350.0">
          <children>
-            <Label alignment="CENTER" prefHeight="50.0" prefWidth="350.0" text="Edit Staff">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="350.0" text="Edit Product" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
@@ -28,56 +28,63 @@
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="buttonUpdate" mnemonicParsing="false" onAction="#updateUser" prefHeight="25.0" prefWidth="100.0" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="buttonUpdate" mnemonicParsing="false" onAction="#updateProduct" prefHeight="25.0" prefWidth="100.0" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Button fx:id="btnCancel" cancelButton="true" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="100.0" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <TextField fx:id="txt_username" promptText="Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="txt_password" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="txt_role" promptText="Role" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField fx:id="txt_name" promptText="Name" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField fx:id="txt_contact" promptText="Contact" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField fx:id="txt_address" promptText="Address" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="txt_name" promptText="Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_material" promptText="Material" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txt_category" promptText="Category" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txt_price" promptText="Price" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <TextField fx:id="txt_id" promptText="ID" GridPane.columnIndex="1" />
                   <Button fx:id="buttonSearch" defaultButton="true" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="100.0" text="Search" GridPane.columnIndex="2" />
                   <Button fx:id="buttonDelete" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="100.0" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Label text="Staff ID" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                  <TextField fx:id="txt_discount" layoutX="127.0" layoutY="200.0" promptText="Discount" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="txt_markup" layoutX="127.0" layoutY="245.0" promptText="Mark Up" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="txt_labourcost" layoutX="127.0" layoutY="254.0" promptText="Labour Cost" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label text="Product ID" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Username" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Label layoutX="10.0" layoutY="22.0" text="Product Name" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Passsword" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Label layoutX="20.0" layoutY="62.0" text="Material" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Role ID" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Label text="Category" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Full Name" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Label text="Price" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Contact" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                  <Label text="Discount" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Address" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                  <Label text="Mark Up" GridPane.rowIndex="6">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Labour" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
