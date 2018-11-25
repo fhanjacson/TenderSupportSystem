@@ -1,6 +1,7 @@
 package sample.UI;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +12,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.Code.Manager;
-import sample.Code.Staff;
 import sample.Code.Tender;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -61,10 +61,10 @@ public class Controller_Tender {
         tableView.setItems(tenderdetail);
     }
 
-    public void gotoLogin() throws IOException {
-        Staff.signout();
-        getPrimaryStage().close();
-    }
+//    public void gotoLogin() throws IOException {
+//        Staff.signout();
+//        getPrimaryStage().close();
+//    }
 
     public void add() throws IOException {
         Controller_AddTender addtender = new Controller_AddTender();
@@ -74,6 +74,13 @@ public class Controller_Tender {
     public void edit() throws IOException {
         Controller_EditTender edittender = new Controller_EditTender();
         edittender.showForm();
+    }
+
+    public void gotoHome(ActionEvent actionEvent) throws IOException {
+        Controller_Menu menugui = new Controller_Menu();
+        menugui.showForm();
+        getPrimaryStage().close();
+
     }
 
 

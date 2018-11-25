@@ -21,11 +21,11 @@
          <items>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
                <items>
-                  <Button fx:id="buttonAdd" mnemonicParsing="false" onAction="#add" text="Add" />
+                  <Button fx:id="buttonAdd" disable="true" mnemonicParsing="false" onAction="#add" text="Add" />
                   <Separator orientation="VERTICAL" prefHeight="25.0" />
-                  <Button fx:id="buttonEdit" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" onAction="#edit" text="Edit" />
+                  <Button fx:id="buttonEdit" disable="true" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" onAction="#edit" text="Edit" />
                   <Separator layoutX="52.0" layoutY="10.0" orientation="VERTICAL" prefHeight="25.0" />
-                  <Button mnemonicParsing="false" text="Calculate Tender Price" />
+                  <Button fx:id="btnCalculate" mnemonicParsing="false" onAction="#calculate" text="Calculate Tender Price" />
                   <Separator layoutX="103.0" layoutY="10.0" orientation="VERTICAL" prefHeight="25.0" />
                   <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refreshTable" text="Refresh" />
                   <Pane HBox.hgrow="ALWAYS" />
@@ -39,11 +39,11 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="40.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="564.0" minWidth="10.0" prefWidth="70.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="51.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="6.0" prefWidth="21.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="343.0" minWidth="10.0" prefWidth="198.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="77.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="253.0" minWidth="10.0" prefWidth="253.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -52,14 +52,15 @@
               </rowConstraints>
                <children>
                   <Label alignment="CENTER" text="Tender ID" />
-                  <TextField alignment="CENTER" GridPane.columnIndex="4" />
+                  <TextField fx:id="txt_productid" alignment="CENTER" disable="true" GridPane.columnIndex="4" />
                   <Label alignment="CENTER" text="Product ID" GridPane.columnIndex="3" />
-                  <TextField alignment="CENTER" GridPane.columnIndex="1" />
+                  <TextField fx:id="txt_tenderid" alignment="CENTER" disable="true" GridPane.columnIndex="1" />
+                  <Button fx:id="btnApply" disable="true" mnemonicParsing="false" onAction="#apply" text="Apply" GridPane.columnIndex="5" />
                </children>
             </GridPane>
             <SplitPane dividerPositions="0.22769953051643194" prefHeight="638.0" prefWidth="756.0">
                <items>
-                  <TableView fx:id="tableList" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="360.0">
+                  <TableView fx:id="tableList" layoutX="10.0" layoutY="10.0" onMouseClicked="#getTenderProduct" prefHeight="200.0" prefWidth="360.0">
                      <columns>
                         <TableColumn fx:id="list1" prefWidth="153.0" text="Tender ID" />
                         <TableColumn fx:id="list2" prefWidth="134.0" text="Product ID" />

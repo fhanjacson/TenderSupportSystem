@@ -38,26 +38,25 @@ public class Controller_AddUserAccount {
         String contact = txt_contact.getText().trim();
         String address = txt_address.getText().trim();
 
-        if(misc.isInteger(strrole)){
-            role = Integer.parseInt(strrole);
-            System.out.println("price is number");
-        }else{System.out.println("price not number");}
-
         if(!(username.isEmpty())){
             if(!(password.isEmpty())){
                 if(!(strrole.isEmpty())&& misc.isInteger(strrole)){
-                    if(!(name.isEmpty())){
-                        if(!(contact.isEmpty())){
-                            if(!(address.isEmpty())){
-                                SystemAdmin.addStaff(username, password, role, name,contact, address);
-                                getPrimaryStage().close();
-                            }else{misc.msgBox("Update Product","Error", "Name is not valid");}
-                        }else{misc.msgBox("Update Product","Error", "Contact is not valid");}
-                    }else{misc.msgBox("Update Product","Error", "Name is not valid");}
-                }else{misc.msgBox("Update Product","Error", "Role is not valid");}
-            }else{misc.msgBox("Update Product","Error", "Password is not valid");}
-        }else{misc.msgBox("Update Product","Error", "Username is not valid");}
+                    role = Integer.parseInt(strrole);
+                    if(role >= 1 && role <= 3){
+                        if(!(name.isEmpty())){
+                            if(!(contact.isEmpty())){
+                                if(!(address.isEmpty())){
+                                    SystemAdmin.addStaff(username, password, role, name,contact, address);
+                                    getPrimaryStage().close();
+                                }else{misc.msgBox("Update Staff","Error", "Name is not valid");}
+                            }else{misc.msgBox("Update Staff","Error", "Contact is not valid");}
+                        }else{misc.msgBox("Update Staff","Error", "Name is not valid");}
+                    }else{misc.msgBox("Add Staff", "Error", "Role must be 1, 2, or 3");}
+                }else{misc.msgBox("Update Staff","Error", "Role is not valid");}
+            }else{misc.msgBox("Update Staff","Error", "Password is not valid");}
+        }else{misc.msgBox("Update Staff","Error", "Username is not valid");}
     }
+
 
     Stage getPrimaryStage(){return (Stage) (txt_name.getScene().getWindow());}
 

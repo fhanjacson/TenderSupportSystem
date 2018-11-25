@@ -31,6 +31,7 @@ public class Controller_Menu {
         else if (Main.login.getLoggedin_role() == 2){
             buttonProduct.setDisable(false);
             buttonTender.setDisable(false);
+            buttonReport.setDisable(false);
         }
         else if (Main.login.getLoggedin_role() == 3){buttonTender.setDisable(false);}
     }

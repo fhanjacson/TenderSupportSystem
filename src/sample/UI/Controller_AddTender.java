@@ -61,7 +61,8 @@ public class Controller_AddTender {
             if(strdeadline != null && misc.isDate(strdeadline)){
                 if(!(strtotal.isEmpty()) && misc.isDouble(strtotal)){
                     if(!(status.isEmpty())){
-                        Manager.addNewTender(name, dateDeadline, total, status);
+                        Manager.addNewTender(name, dateDeadline, 0.00, status);
+//                        Manager.addNewTender(name, dateDeadline, total, status);
                         getPrimaryStage().close();
                         System.out.println("Tender Added");
                     }else{misc.msgBox("Update Product","Error", "Status is not valid");}

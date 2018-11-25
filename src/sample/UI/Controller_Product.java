@@ -14,16 +14,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.Code.Manager;
 import sample.Code.Product;
-import sample.Code.Staff;
-
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Controller_Product {
-    private ObservableList<Product> productdetail = FXCollections.observableArrayList();
+    private ObservableList<Product> productdetail;
     @FXML Button buttonAdd, buttonEdit;
     @FXML TableView<Product> tableView;
     @FXML TableColumn<Product, Integer> Column1;
@@ -61,11 +56,11 @@ public class Controller_Product {
         primaryStage.show();
     }
 
-    public void gotoLogin() throws IOException {
-        Staff.signout();
-        getPrimaryStage().close();
-
-    }
+//    public void gotoLogin() throws IOException {
+//        Staff.signout();
+//        getPrimaryStage().close();
+//
+//    }
 
     public void add() throws IOException {
         Controller_AddProduct addproduct = new Controller_AddProduct();
@@ -90,4 +85,10 @@ public class Controller_Product {
         return (Stage) (buttonAdd.getScene().getWindow());
     }
 
+    public void gotoHome(ActionEvent actionEvent) throws IOException {
+        Controller_Menu menugui = new Controller_Menu();
+        menugui.showForm();
+        getPrimaryStage().close();
+
+    }
 }

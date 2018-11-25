@@ -45,7 +45,7 @@ public class DBconnection {
         try {
             Class.forName(DBconnection.getDBDriver());
             Connection con = DBconnection.getConnection();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM tendersupportsystem.user WHERE id = '" + id + "'");
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM tendersupportsystem.user WHERE user_index = '" + id + "'");
             while (rs.next()) {
                 staff.setUsername(rs.getString(2));
                 staff.setPassword(rs.getString(3));
@@ -212,5 +212,46 @@ public class DBconnection {
     }
 
 
+    //TENDER PRODUCT
+    ObservableList<TenderProduct> viewTenderProduct() {
+        ObservableList<TenderProduct> tenderproductdetail = FXCollections.observableArrayList();
+        try {
+            Class.forName(getDBDriver());
+            ResultSet rs = getConnection().createStatement().executeQuery("SELECT * FROM tendersupportsystem.tender_product");
+            while (rs.next()) {
+                tenderproductdetail.add(new TenderProduct(rs.getInt(1), rs.getInt(2)));
+            }
+            getConnection().close();
+        } catch (ClassNotFoundException | SQLException e) {e.printStackTrace();}
+        return tenderproductdetail;
+    }
 
+    void addProductToTender(Integer tenderID, Integer productID) throws SQLException, ClassNotFoundException {
+        Statement stmt = DBconnection.getStatement();
+        String sql = "INSERT INTO tendersupportsystem.tender_product (Tender_ID, Product_ID) VALUES ('" + tenderID + "', '" + productID + "')";
+        int sqlResult = stmt.executeUpdate(sql);
+        System.out.println("SQL Result: "+sqlResult);
+        getConnection().close();
+    }
+
+    void calculateTenderTotalAmount(Integer id) throws SQLException, ClassNotFoundException {
+        Statement stmt = DBconnection.getStatement();
+        String sql = "UPDATE tender SET tender.total_amount =(Select SUM(Product_Price - Product_Discount + Product_MarkUp +  Product_LabourCost) from product where Product_ID in (select Product_ID from tender_product where Tender_ID='"+ id +"')) where id='"+ id +"'";
+        int sqlResult = stmt.executeUpdate(sql);
+        System.out.println("SQL Result: "+sqlResult);
+        getConnection().close();
+    }
+
+    ObservableList<TenderProduct> viewDetailedTenderProduct() {
+        ObservableList<TenderProduct> tenderproductdetail = FXCollections.observableArrayList();
+        try {
+            Class.forName(getDBDriver());
+            ResultSet rs = getConnection().createStatement().executeQuery("select Tender_ID, tender_product.Product_ID, Product_Name, Product_Material, Product_Category, Product_Price, Product_Discount, Product_MarkUp, Product_LabourCost, total_amount from (( tender_product inner JOIN product on product.Product_ID = tender_product.Product_ID) inner join tender on tender.id = tender_product.Tender_ID)");
+            while (rs.next()) {
+                tenderproductdetail.add(new TenderProduct(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8), rs.getDouble(9), rs.getDouble(10)));
+            }
+            getConnection().close();
+        } catch (ClassNotFoundException | SQLException e) {e.printStackTrace();}
+        return tenderproductdetail;
+    }
 }
